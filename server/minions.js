@@ -1,4 +1,4 @@
-import { Router as minionsRouter } from 'express';
+const minionsRouter = require('express').Router();
 
 module.exports = minionsRouter;
 
