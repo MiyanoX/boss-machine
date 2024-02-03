@@ -34,3 +34,17 @@ ideasRouter.post('/', checkMillionDollarIdea, (req, res, next) => {
 ideasRouter.get('/:ideaId', (req, res, next) => {
     res.send(req.idea);
 });
+
+ideasRouter.put('/:ideaId', (req, res, next) => {
+    let updatedInstance = updateInstanceInDatabase('ideas', req.body);
+    res.send(updatedInstance);
+});
+
+ideasRouter.delete('/:ideaID', (req, res, next) => {
+    const deleted = deleteFromDatabasebyId('ideas', req.params.id);
+    if (deleted) {
+        res.status(204);
+    } else {
+        res.status(500);
+    }
+});
